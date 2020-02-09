@@ -1,4 +1,4 @@
-module github.com/InesTlili/shipping
+module github.com/InesTlili/service_consignment
 
 go 1.13
 
