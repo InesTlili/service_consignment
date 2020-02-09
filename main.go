@@ -1,18 +1,13 @@
 package main
 
 import (
-
-	// Import the generated protobuf code
 	"fmt"
 
+	// Import the generated protobuf code
 	"context"
 
 	pb "github.com/InesTlili/service_consignment/proto/consignmentpb"
 	"github.com/micro/go-micro"
-)
-
-const (
-	port = ":50051"
 )
 
 type repository interface {
@@ -26,7 +21,6 @@ type Repository struct {
 	consignments []*pb.Consignment
 }
 
-// Create a new consignment
 func (repo *Repository) Create(consignment *pb.Consignment) (*pb.Consignment, error) {
 	updated := append(repo.consignments, consignment)
 	repo.consignments = updated
@@ -63,7 +57,6 @@ func (s *service) CreateConsignment(ctx context.Context, req *pb.Consignment, re
 	return nil
 }
 
-// GetConsignments -
 func (s *service) GetConsignments(ctx context.Context, req *pb.GetRequest, res *pb.Response) error {
 	consignments := s.repo.GetAll()
 	res.Consignments = consignments
